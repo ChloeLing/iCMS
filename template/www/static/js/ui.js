@@ -20,7 +20,34 @@ $(function() {
     //         return false;
     //     }
     // });
+    //
+    iCMS.run('user', function($USER) {
+        //用户状态
+        $USER.STATUS({},
+            //登陆后事件
+            function($info) {
+                console.log($info);
+                $("#user-login").hide();
+                $("#user-profile").show();
+            },
+            //未登陆事件
+            function(f) {
+                console.log(f)
+            }
+        );
+        //退出登陆
+        $(".logout").click(function(event) {
+            event.preventDefault();
+            $USER.LOGOUT({
+                'forward': window.top.location.href
+            },
+            function(s) {
+                window.top.location.reload();
+            });
+        });
+    });
 })
+
 // function hover (a, t, l) {
 //     var pop,timeOutID = null,t = t || 0, l = l || 0;
 //     a.hover(function() {

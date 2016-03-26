@@ -59,15 +59,15 @@
             iCMS.run('passport', function($PASSPORT) {
                 //注册成功 事件绑定
                 $PASSPORT.SUCCESS = function(s) {
-                        // console.log('****',s);
-                        window.top.location.href = s.forward;
-                    }
-                    //注册失败 事件绑定
+                    // console.log('****',s);
+                    window.top.location.href = s.forward;
+                }
+                //注册失败 事件绑定
                 $PASSPORT.FAIL = function(f) {
-                        iCMS.seccode(".seccode-img", register);
-                        tip(f);
-                    }
-                    //提交参数
+                    iCMS.seccode(".seccode-img", register);
+                    tip(f);
+                }
+                //提交参数
                 $PASSPORT.REGISTER(param);
             });
         });

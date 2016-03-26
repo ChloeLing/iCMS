@@ -56,23 +56,24 @@
                 }
             }
             <!--{/if}-->
+
             <!--{if $user}-->
             //绑定账号
             param.OPENID = <!--{$user|json_encode}-->;
-                <!--{/if}-->
-                //登录接口
-                iCMS.run('passport', function($PASSPORT) {
-                    //登录成功 事件绑定
-                    $PASSPORT.SUCCESS = function(s) {
-                            window.top.location.href = s.forward;
-                        }
-                        //登录失败 事件绑定
-                    $PASSPORT.FAIL = function(f) {
-                            tip(f);
-                        }
-                        //提交参数
-                    $PASSPORT.LOGIN(param);
-                });
+            <!--{/if}-->
+            //登录接口
+            iCMS.run('passport', function($PASSPORT) {
+                //登录成功 事件绑定
+                $PASSPORT.SUCCESS = function(s) {
+                    window.top.location.href = s.forward;
+                }
+                //登录失败 事件绑定
+                $PASSPORT.FAIL = function(f) {
+                    tip(f);
+                }
+                //提交参数
+                $PASSPORT.LOGIN(param);
+            });
             //提示
             function tip(ret) {
                 iCMS.seccode(".seccode-img", login);
